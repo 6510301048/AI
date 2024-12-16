@@ -67,6 +67,11 @@ y_min, y_max = -3, 3
 xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
 Z = (yy > xx).astype(int)  # Define regions based on the straight line y = x
 
+# Evaluate the model on the test set
+loss, accuracy = model.evaluate(X_test, y_test, verbose=0)
+print(f"Test Accuracy: {accuracy:.2f}")
+
+
 # Plot the decision regions with a background color
 plt.figure(figsize=(8, 6))
 plt.contourf(xx, yy, Z, alpha=0.5, cmap=plt.cm.RdBu)  # Add background colors
